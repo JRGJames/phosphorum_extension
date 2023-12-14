@@ -26,6 +26,7 @@
           <th (click)="doOrder('title')">Title</th>
           <th (click)="doOrder('user')">User</th>
           <th>Number of replies</th>
+          <th (click)="doOrder('enabled')">Status</th>
           <th>Tools</th>
         </tr>
       </thead>
@@ -35,6 +36,10 @@
           <td>{{t.title}}</td>
           <td>{{t.user.name}}</td>
           <td class="text-center">{{t.replies}} </td>
+          <td class="text-center">
+            <span *ngIf="t.enabled==true">Enabled</span>
+            <span *ngIf="t.enabled==false">Disabled</span>
+          </td>
           <td class="text-center">
             <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
               <button class="btn btn-primary" (click)="onSelectThread(t)"><i class="pi pi-plus-circle"></i></button>

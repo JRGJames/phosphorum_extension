@@ -27,6 +27,7 @@
           <th (click)="doOrder('title')">Title</th>
           <th (click)="doOrder('user')">User</th>
           <th>Number of replies</th>
+          <th (click)="doOrder('enabled')">Status</th>
           <th>Tools</th>
         </tr>
       </thead>
@@ -41,6 +42,10 @@
           <td class="text-center">
             <a [routerLink]="['/admin','reply','plist','bythread',t.id]" *ngIf="t.replies>0">{{t.replies}}</a>
             <span *ngIf="t.replies==0">0</span>
+          </td>
+          <td class="text-center">
+            <span *ngIf="t.enabled==true">Enabled</span>
+            <span *ngIf="t.enabled==false">Disabled</span>
           </td>
           <td class="text-center">
             <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">

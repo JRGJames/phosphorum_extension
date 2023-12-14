@@ -50,7 +50,8 @@ export class AdminReplyFormUnroutedComponent implements OnInit {
       }),
       thread: this.formBuilder.group({
         id: [oReply.thread.id, Validators.required]
-      })
+      }),
+      enabled: [oReply.enabled, Validators.required]
     });
   }
 

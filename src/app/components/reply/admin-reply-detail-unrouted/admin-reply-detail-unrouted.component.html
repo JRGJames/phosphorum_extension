@@ -38,6 +38,13 @@
                 <th>thread</th>
                 <td> <a [routerLink]="['/admin','thread','view',oReply.thread.id]">{{oReply.thread.title}}</a> </td>
             </tr>
+            <tr>
+                <th>status</th>
+                <td>
+                    <span *ngIf="oReply.enabled==true">Enabled</span>
+                    <span *ngIf="oReply.enabled==false">Disabled</span>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

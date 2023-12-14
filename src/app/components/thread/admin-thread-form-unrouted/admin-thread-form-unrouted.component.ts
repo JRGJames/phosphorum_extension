@@ -7,6 +7,7 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { IThread, IUser, formOperation } from 'src/app/model/model.interfaces';
 import { AdminUserSelectionUnroutedComponent } from '../../user/admin-user-selection-unrouted/admin-user-selection-unrouted.component';
 import { ThreadAjaxService } from 'src/app/service/thread.ajax.service.service';
+import { enableDebugTools } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-admin-thread-form-unrouted',
@@ -40,7 +41,8 @@ export class AdminThreadFormUnroutedComponent implements OnInit {
       title: [oThread.title, [Validators.required, Validators.minLength(1), Validators.maxLength(2048)]],
       user: this.formBuilder.group({
         id: [oThread.user.id, Validators.required]
-      })
+      }),
+      enabled: [oThread.enabled, [Validators.required]]
     });
   }
 

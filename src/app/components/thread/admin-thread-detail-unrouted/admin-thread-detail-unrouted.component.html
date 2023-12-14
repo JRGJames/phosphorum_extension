@@ -34,6 +34,12 @@
                     <span *ngIf="oThread.replies==0">0</span>
                 </td>
             </tr>
+            <tr>
+                <th>status</th>
+                <td>
+                    <span *ngIf="oThread.enabled==true">Enabled</span>
+                    <span *ngIf="oThread.enabled==false">Disabled</span>
+                </td>
         </tbody>
     </table>
 </div>
