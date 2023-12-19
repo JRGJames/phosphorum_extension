@@ -110,20 +110,21 @@ export class AdminUserPlistUnroutedComponent implements OnInit {
     });
   }
 
-  toggleUserEnabled(user: IUser): void {
-    // Alternar el valor "enabled" entre true y false
-    user.enabled = !user.enabled;
+  
 
-    // Llamar al servicio para actualizar el usuario en el backend
-    this.oUserAjaxService.updateOne(user).subscribe({
+  toggleUserEnabled(user: IUser): void {
+    const userToUpdate: IUser = { ...user };
+    delete userToUpdate.threads;
+    delete userToUpdate.replies;
+
+    userToUpdate.enabled = !userToUpdate.enabled;
+
+    this.oUserAjaxService.updateOne(userToUpdate).subscribe({
       next: () => {
-        // Realizar acciones adicionales si es necesario después de la actualización
-        console.log('El valor "enabled" se ha alternado con éxito.');
+        this.forceReload.next(true);
       },
       error: (error) => {
-        console.error('Error al alternar el valor "enabled":', error);
-        // Restaurar el valor original si hay un error
-        user.enabled = !user.enabled;
+        userToUpdate.enabled = !userToUpdate.enabled;
       }
     });
   }

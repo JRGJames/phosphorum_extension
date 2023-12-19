@@ -29,10 +29,12 @@
             <tr>
                 <th>replies</th>
                 <td>
-                    <a [routerLink]="['/admin','reply','plist','bythread',oThread.id]"
-                        *ngIf="oThread.replies>0">{{oThread.replies}}</a>
-                    <span *ngIf="oThread.replies==0">0</span>
-                </td>
+                    <ng-container *ngIf="oThread && oThread.replies !== undefined">
+                      <a [routerLink]="['/admin','reply','plist','bythread',oThread.id]" *ngIf="oThread.replies > 0">{{oThread.replies}}</a>
+                      <span *ngIf="oThread.replies === 0">0</span>
+                    </ng-container>
+                  </td>
+                  
             </tr>
             <tr>
                 <th>status</th>

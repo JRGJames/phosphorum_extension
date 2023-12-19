@@ -47,8 +47,8 @@ export interface IUser extends IEntity {
     email: string,
     username: string,
     role: boolean,
-    threads: number,
-    replies: number,
+    threads?: number,
+    replies?: number,
     enabled: boolean
 }
 
@@ -58,7 +58,7 @@ export interface IUserPage extends IPage<IUser> {
 export interface IThread extends IEntity {
     title: string,
     user: IUser,
-    replies: number,
+    replies?: number,
     enabled: boolean    
 }
 
