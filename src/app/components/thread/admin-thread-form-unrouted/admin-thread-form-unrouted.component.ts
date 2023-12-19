@@ -41,8 +41,7 @@ export class AdminThreadFormUnroutedComponent implements OnInit {
       title: [oThread.title, [Validators.required, Validators.minLength(1), Validators.maxLength(2048)]],
       user: this.formBuilder.group({
         id: [oThread.user.id, Validators.required]
-      }),
-      enabled: [oThread.enabled, [Validators.required]]
+      })
     });
   }
 

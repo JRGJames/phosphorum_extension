@@ -67,17 +67,15 @@
                   class="pi pi-pencil"></i></button>
               <button *ngIf="u.threads==0 && u.replies==0" class="btn btn-danger" (click)="doRemove(u)"><i
                   class="pi pi-trash"></i></button>
+              <button class="btn" [ngClass]="{'btn-success': u.enabled, 'btn-danger': !u.enabled}"
+                (click)="toggleUserEnabled(u)">
+                <i class="pi pi-power-off"></i>
+              </button>
             </div>
           </td>
         </tr>
       </tbody>
     </table>
-
-
-
-
-
-
   </div>
 </div>
 

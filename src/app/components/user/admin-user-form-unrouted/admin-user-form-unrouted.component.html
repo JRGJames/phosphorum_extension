@@ -70,14 +70,6 @@
             <mat-error *ngIf="hasError('role', 'required')">User Type is required</mat-error>
           </mat-radio-group>
         </div>
-        <div>
-          <mat-radio-group aria-label="Status of user" formControlName="enabled" required>
-            <mat-radio-button [value]="true">Enabled</mat-radio-button>
-            <mat-radio-button [value]="false">Disabled</mat-radio-button>
-            <mat-error *ngIf="hasError('enabled', 'required')">User status is required</mat-error>
-          </mat-radio-group>
-        </div>
-
         <div class="text-center mt-5">
           <button mat-raised-button color="primary" type="submit" [disabled]="!userForm.valid">Save User</button>
         </div>
