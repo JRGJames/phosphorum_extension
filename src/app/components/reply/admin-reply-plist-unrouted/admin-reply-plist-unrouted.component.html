@@ -32,7 +32,6 @@
           <th (click)="doOrder('creation')">Creation</th>
           <th (click)="doOrder('user')">User</th>          
           <th (click)="doOrder('thread')">Thread</th>
-          <th (click)="doOrder('enabled')">Status</th>
           <th>Tools</th>
         </tr>
       </thead>
@@ -50,10 +49,6 @@
             <a [routerLink]="['/admin','reply','plist','bythread',r.thread.id]">({{r.thread.id}})
               {{r.thread.title}}
             </a>
-          </td>
-          <td class="text-center">
-            <span *ngIf="r.enabled==true">Enabled</span>
-            <span *ngIf="r.enabled==false">Disabled</span>
           </td>
           <td class="text-center">
             <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">

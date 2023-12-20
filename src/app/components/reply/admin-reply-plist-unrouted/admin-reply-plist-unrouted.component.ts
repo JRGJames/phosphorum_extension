@@ -148,16 +148,24 @@ export class AdminReplyPlistUnroutedComponent implements OnInit {
   }
 
   toggleReplyEnabled(reply: IReply): void {
-    reply.enabled = !reply.enabled;
+    const replyToUpdate: IReply = { ...reply };
+    delete replyToUpdate.thread.replies;
+    delete replyToUpdate.user.replies;
+    delete replyToUpdate.user.threads;
+    delete replyToUpdate.user.replies;
+    delete replyToUpdate.thread.user.replies;
+    delete replyToUpdate.thread.user.threads;
+
+
+
+    replyToUpdate.enabled = !replyToUpdate.enabled;
   
-    this.oReplyAjaxService.updateOne(reply).subscribe({
+    this.oReplyAjaxService.updateOne(replyToUpdate).subscribe({
       next: () => {
-        console.log('El valor "enabled" se ha alternado con éxito.');
         this.forceReload.next(true);
       },
       error: (error) => {
-        console.error('Error al alternar el valor "enabled":', error);
-        reply.enabled = !reply.enabled;
+        replyToUpdate.enabled = !replyToUpdate.enabled;
       }
     });
   }

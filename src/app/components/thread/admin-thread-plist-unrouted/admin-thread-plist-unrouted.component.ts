@@ -130,16 +130,16 @@ export class AdminThreadPlistUnroutedComponent implements OnInit {
   toggleThreadEnabled(thread: IThread): void {
     const threadToUpdate: IThread = { ...thread };
     delete threadToUpdate.replies;
+    delete threadToUpdate.user.threads
+    delete threadToUpdate.user.replies;
 
     threadToUpdate.enabled = !threadToUpdate.enabled;
 
     this.oThreadAjaxService.updateOne(threadToUpdate).subscribe({
       next: () => {
-        console.log('El valor "enabled" se ha alternado con éxito.');
-        this.forceReload.next(true); // Notificar sobre el cambio a otros componentes
+        this.forceReload.next(true);
       },
       error: (error) => {
-        console.error('Error al alternar el valor "enabled":', error);
         threadToUpdate.enabled = !threadToUpdate.enabled;
       }
     });
